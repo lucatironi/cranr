@@ -5,3 +5,9 @@ Create a docker image with latest Ruby (2.4.2) and basically nothing else:
 ```
 $ docker build -t cranr .
 ```
+
+Run `bundle` inside the container to generate the `Gemfile.lock` file:
+
+```
+$ docker run -v "$PWD:/src" --rm cranr bundle
+```
