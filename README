@@ -11,3 +11,17 @@ Run `bundle` inside the container to generate the `Gemfile.lock` file:
 ```
 $ docker run -v "$PWD:/src" --rm cranr bundle
 ```
+
+Start a shell inside the container:
+
+```
+$ docker run -it -v "$PWD:/src" --rm cranr bash
+```
+
+Run some commands inside the container:
+
+```
+bundle
+
+bundle exec rspec --init
+```
