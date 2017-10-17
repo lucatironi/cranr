@@ -1,0 +1,7 @@
+CRANr
+
+Create a docker image with latest Ruby (2.4.2) and basically nothing else:
+
+```
+$ docker build -t cranr .
+```
