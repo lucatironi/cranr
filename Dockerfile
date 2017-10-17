@@ -1,0 +1,6 @@
+FROM ruby:2.4.2
+
+ENV APP_ROOT /src
+
+WORKDIR $APP_ROOT
+ADD . $APP_ROOT
