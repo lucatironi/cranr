@@ -24,4 +24,6 @@ Run some commands inside the container:
 bundle
 
 bundle exec rspec --init
+
+bundle exec rspec
 ```
