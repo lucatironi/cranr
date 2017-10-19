@@ -1,12 +1,11 @@
 class PackagesListParser
-  def initialize(text)
-    @text = text
+  def initialize
     @packages = []
   end
 
-  def extract
-    return [] unless @text.is_a?(String)
-    @text.split("\n\n").each do |package_metadata|
+  def extract(text)
+    return [] unless text.is_a?(String)
+    text.split("\n\n").each do |package_metadata|
       matched_data = /Package\:\s(?<name>\w+)\nVersion\:\s(?<version>\S+)/.match(package_metadata)
       @packages << { name: matched_data[:name], version: matched_data[:version] } unless matched_data.nil?
     end

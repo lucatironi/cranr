@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'package_description_parser'
 
 RSpec.describe PackageDescriptionParser do
+  let(:parser) { described_class.new }
   describe '#extract' do
     let(:package_description_text) {
 <<-EOS
@@ -34,7 +35,7 @@ Maintainer: Blum Michael <michael.blum@imag.fr>
 Date/Publication: 2015-05-05 11:34:14
 EOS
     }
-    let(:parsed_data) { described_class.new(package_description_text).extract }
+    let(:parsed_data) { parser.extract(package_description_text) }
 
     it { expect(parsed_data).not_to be_nil }
     it { expect(parsed_data).to be_kind_of(Hash) }

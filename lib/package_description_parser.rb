@@ -33,13 +33,12 @@ class PackageDescriptionParser
   # )
   REGEX = /(?<=^|[\r\n])([A-Z][^:]*):\s([^\r\n]*(?:[\r\n]+(?![A-Z].*:).*)*)/
 
-  def initialize(text)
-    @text = text
+  def initialize
     @data = {}
   end
 
-  def extract
-    @data = @text.scan(REGEX).reduce({}) do |h, kv_pair|
+  def extract(text)
+    @data = text.scan(REGEX).reduce({}) do |h, kv_pair|
       h[kv_pair[0]] = kv_pair[1].gsub(/\n\s+/, ' ').gsub(/\n/, '')
       h
     end
