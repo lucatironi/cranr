@@ -8,7 +8,7 @@ RSpec.describe PackagesFetcher do
     before do
       expect(fetcher).to receive(:open)
         .with(PackagesFetcher::CRAN_SERVER_BASE_URL + 'PACKAGES')
-        .and_return(File.open(File.join(File.dirname(__FILE__), 'fixtures', 'files', 'PACKAGES')))
+        .and_return(File.open(File.join('spec', 'fixtures', 'files', 'PACKAGES')))
     end
 
     it { expect(fetcher.retrieve_list).to be_kind_of(Array) }
@@ -22,7 +22,7 @@ RSpec.describe PackagesFetcher do
     before do
       expect(fetcher).to receive(:open)
         .with(PackagesFetcher::CRAN_SERVER_BASE_URL + 'abc_2.1.tar.gz')
-        .and_return(File.open(File.join(File.dirname(__FILE__), 'fixtures', 'files', 'abc_2.1.tar.gz')))
+        .and_return(File.open(File.join('spec', 'fixtures', 'files', 'abc_2.1.tar.gz')))
     end
 
     it { expect(package_data).to be_kind_of(Hash) }
