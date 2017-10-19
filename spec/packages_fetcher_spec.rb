@@ -4,20 +4,20 @@ require 'packages_fetcher'
 RSpec.describe PackagesFetcher do
   let(:fetcher) { described_class.new }
 
-  describe '#get_list' do
+  describe '#retrieve_list' do
     before do
       expect(fetcher).to receive(:open)
         .with(PackagesFetcher::CRAN_SERVER_BASE_URL + 'PACKAGES')
         .and_return(File.open(File.join(File.dirname(__FILE__), 'fixtures', 'files', 'PACKAGES')))
     end
 
-    it { expect(fetcher.get_list).to be_kind_of(Array) }
-    it { expect(fetcher.get_list).not_to be_empty }
-    it { expect(fetcher.get_list).to include({ name: 'abbyyR', version: '0.5.1' }) }
+    it { expect(fetcher.retrieve_list).to be_kind_of(Array) }
+    it { expect(fetcher.retrieve_list).not_to be_empty }
+    it { expect(fetcher.retrieve_list).to include(name: 'abbyyR', version: '0.5.1') }
   end
 
-  describe '#get_package' do
-    let(:package_data) { fetcher.get_package('abc', '2.1') }
+  describe '#retrieve_package' do
+    let(:package_data) { fetcher.retrieve_package('abc', '2.1') }
 
     before do
       expect(fetcher).to receive(:open)

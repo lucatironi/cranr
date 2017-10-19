@@ -38,10 +38,9 @@ class PackageDescriptionParser
   end
 
   def extract(text)
-    @data = text.scan(REGEX).reduce({}) do |h, kv_pair|
-      h[kv_pair[0]] = kv_pair[1].gsub(/\n\s+/, ' ').gsub(/\n/, '')
-      h
+    @data = text.scan(REGEX).each_with_object({}) do |kv_pair, h|
+      h[kv_pair[0]] = kv_pair[1].gsub(/\n\s+/, ' ').delete("\n")
     end
-    return @data
+    @data
   end
 end

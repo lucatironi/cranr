@@ -2,19 +2,19 @@ require 'open-uri'
 require 'tar'
 
 class PackagesFetcher
-  CRAN_SERVER_BASE_URL = 'https://cran.r-project.org/src/contrib/'
+  CRAN_SERVER_BASE_URL = 'https://cran.r-project.org/src/contrib/'.freeze
 
   def initialize
     @list_parser = PackagesListParser.new
     @description_parser = PackageDescriptionParser.new
   end
 
-  def get_list
+  def retrieve_list
     list = open(CRAN_SERVER_BASE_URL + 'PACKAGES').read
     @list_parser.extract(list)
   end
 
-  def get_package(name, version)
+  def retrieve_package(name, version)
     package_file = open(CRAN_SERVER_BASE_URL + "#{name}_#{version}.tar.gz")
 
     Dir.mktmpdir do |tmp_dir|

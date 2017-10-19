@@ -9,6 +9,6 @@ class PackagesListParser
       matched_data = /Package\:\s(?<name>\w+)\nVersion\:\s(?<version>\S+)/.match(package_metadata)
       @packages << { name: matched_data[:name], version: matched_data[:version] } unless matched_data.nil?
     end
-    return @packages
+    @packages
   end
 end
