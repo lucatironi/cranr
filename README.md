@@ -27,3 +27,9 @@ bundle exec rspec --init
 
 bundle exec rspec
 ```
+
+```
+$ docker-compose run app bundle --jobs=10 --retry=5
+
+$ docker-compose run app bundle exec rails new . --force --database=postgresql --skip-test --skip-action-cable --skip-bundle
+```
