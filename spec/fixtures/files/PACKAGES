@@ -1,0 +1,247 @@
+Package: A3
+Version: 1.0.0
+Depends: R (>= 2.15.0), xtable, pbapply
+Suggests: randomForest, e1071
+License: GPL (>= 2)
+NeedsCompilation: no
+
+Package: abbyyR
+Version: 0.5.1
+Depends: R (>= 3.2.0)
+Imports: httr, XML, curl, readr, plyr, progress
+Suggests: testthat, rmarkdown, knitr (>= 1.11)
+License: MIT + file LICENSE
+NeedsCompilation: no
+
+Package: abc
+Version: 2.1
+Depends: R (>= 2.10), abc.data, nnet, quantreg, MASS, locfit
+License: GPL (>= 3)
+NeedsCompilation: no
+
+Package: abc.data
+Version: 1.0
+Depends: R (>= 2.10)
+License: GPL (>= 3)
+NeedsCompilation: no
+
+Package: ABC.RAP
+Version: 0.9.0
+Depends: R (>= 3.1.0)
+Imports: graphics, stats, utils
+Suggests: knitr, rmarkdown
+License: GPL-3
+NeedsCompilation: no
+
+Package: ABCanalysis
+Version: 1.2.1
+Depends: R (>= 2.10)
+Imports: plotrix
+License: GPL-3
+NeedsCompilation: no
+
+Package: abcdeFBA
+Version: 0.4
+Depends: Rglpk,rgl,corrplot,lattice,R (>= 2.10)
+Suggests: LIM,sybil
+License: GPL-2
+NeedsCompilation: no
+
+Package: ABCoptim
+Version: 0.14.0
+Imports: Rcpp
+LinkingTo: Rcpp
+Suggests: testthat, covr
+License: GPL (>= 3)
+NeedsCompilation: yes
+
+Package: ABCp2
+Version: 1.2
+Depends: MASS
+License: GPL-2
+NeedsCompilation: no
+
+Package: abcrf
+Version: 1.7
+Depends: R(>= 3.1)
+Imports: readr, MASS, matrixStats, ranger, parallel, stringr, Rcpp (>=
+        0.11.2)
+LinkingTo: Rcpp, RcppArmadillo
+License: GPL (>= 2)
+NeedsCompilation: yes
+
+Package: abctools
+Version: 1.1.1
+Depends: R (>= 2.10), abc, abind, parallel, plyr, Hmisc
+Suggests: ggplot2, abc.data
+License: GPL (>= 2)
+NeedsCompilation: yes
+
+Package: abd
+Version: 0.2-8
+Depends: R (>= 3.0), nlme, lattice, grid, mosaic
+Suggests: boot, car, ggplot2, plyr, HH, ICC, vcd, Hmisc
+License: GPL-2
+NeedsCompilation: no
+
+Package: abf2
+Version: 0.7-1
+License: Artistic-2.0
+NeedsCompilation: no
+
+Package: ABHgenotypeR
+Version: 1.0.1
+Imports: ggplot2, reshape2, utils
+Suggests: knitr, rmarkdown
+License: GPL-3
+NeedsCompilation: no
+
+Package: abind
+Version: 1.4-5
+Depends: R (>= 1.5.0)
+Imports: methods, utils
+License: LGPL (>= 2)
+NeedsCompilation: no
+
+Package: abjutils
+Version: 0.0.1
+Depends: R (>= 3.3.1)
+Imports: stringr, dplyr, httr, tibble, devtools, magrittr
+Suggests: testthat
+License: MIT + file LICENSE
+NeedsCompilation: no
+
+Package: abn
+Version: 1.0.2
+Depends: Cairo, R (>= 2.15.1)
+Imports: methods
+Suggests: INLA, Rgraphviz
+License: GPL (>= 2)
+NeedsCompilation: yes
+
+Package: abodOutlier
+Version: 0.1
+Depends: cluster, R (>= 3.1.2)
+License: MIT + file LICENSE
+NeedsCompilation: no
+
+Package: AbsFilterGSEA
+Version: 1.5.1
+Imports: Rcpp, Biobase, stats, DESeq, limma
+LinkingTo: Rcpp, RcppArmadillo
+License: GPL-2
+NeedsCompilation: yes
+
+Package: AbSim
+Version: 0.2.3
+Depends: R(>= 3.1.0), ape, poweRlaw
+Suggests: knitr, rmarkdown
+License: GPL-2
+NeedsCompilation: no
+
+Package: abundant
+Version: 1.1
+Depends: R (>= 2.10), QUIC
+License: GPL-2
+NeedsCompilation: yes
+
+Package: ACA
+Version: 1.0
+Depends: R (>= 3.2.2)
+Imports: graphics, grDevices, stats, utils
+License: GPL
+NeedsCompilation: no
+
+Package: acc
+Version: 1.3.3
+Depends: R (>= 2.10), mhsmm
+Imports: zoo, PhysicalActivity, nleqslv, plyr, methods, DBI, RSQLite,
+        circlize, ggplot2, R.utils, iterators, Rcpp
+LinkingTo: Rcpp, RcppArmadillo
+License: GPL (>= 2)
+NeedsCompilation: yes
+
+Package: accelerometry
+Version: 2.2.5
+Depends: R (>= 3.0.0)
+Imports: Rcpp (>= 0.11.0)
+LinkingTo: Rcpp
+License: GPL-2
+NeedsCompilation: yes
+
+Package: accelmissing
+Version: 1.1
+Depends: R (>= 2.10), mice, pscl
+License: GPL (>= 2)
+NeedsCompilation: no
+
+Package: AcceptanceSampling
+Version: 1.0-5
+Depends: methods, R(>= 2.4.0), stats
+Imports: graphics, utils
+License: GPL (>= 3)
+NeedsCompilation: no
+
+Package: ACCLMA
+Version: 1.0
+License: GPL-2
+NeedsCompilation: no
+
+Package: accrual
+Version: 1.2
+Depends: R(>= 3.1.3), tcltk2
+Imports: fgui, SMPracticals
+License: GPL-2
+NeedsCompilation: no
+
+Package: accrued
+Version: 1.4.1
+Depends: R (>= 2.14.1), grid
+License: GPL-3
+NeedsCompilation: no
+
+Package: accSDA
+Version: 1.0.0
+Depends: R (>= 3.2)
+Imports: MASS (>= 7.3.45), rARPACK (>= 0.10.0), sparseLDA (>= 0.1.7),
+        ggplot2 (>= 2.1.0), ggthemes (>= 3.2.0), grid (>= 3.2.2),
+        gridExtra (>= 2.2.1)
+License: GPL (>= 2)
+NeedsCompilation: no
+
+Package: ACD
+Version: 1.5.3
+Depends: R(>= 2.13.0)
+License: GPL (>= 2)
+NeedsCompilation: no
+
+Package: ACDm
+Version: 1.0.4
+Depends: R(>= 2.10.0)
+Imports: plyr, dplyr, ggplot2, Rsolnp, zoo, graphics,
+Suggests: optimx, rgl,
+License: GPL (>= 2)
+NeedsCompilation: yes
+
+Package: acebayes
+Version: 1.4.1
+Depends: R (>= 3.0.2), lhs
+Imports: Rcpp (>= 0.12.2), compare, randtoolbox
+LinkingTo: Rcpp, RcppArmadillo (>= 0.6.400.2.2)
+Suggests: R.rsp
+License: GPL-2
+NeedsCompilation: yes
+
+Package: acepack
+Version: 1.4.1
+Suggests: testthat
+License: MIT + file LICENSE
+NeedsCompilation: yes
+
+Package: ACEt
+Version: 1.8.0
+Depends: R (>= 3.1.1)
+Imports: Rcpp (>= 0.11.1), splines, MASS
+LinkingTo: BH, RcppArmadillo, Rcpp
+License: GPL (>= 2)
+NeedsCompilation: yes
