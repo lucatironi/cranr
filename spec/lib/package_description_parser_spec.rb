@@ -3,7 +3,8 @@ require 'package_description_parser'
 require 'active_support/core_ext/string'
 
 RSpec.describe PackageDescriptionParser do
-  let(:parser) { described_class.new }
+  let(:subject) { described_class.new }
+
   describe '#extract' do
     let(:package_description_text) do
       <<-TXT.strip_heredoc
@@ -36,7 +37,7 @@ RSpec.describe PackageDescriptionParser do
         Date/Publication: 2015-05-05 11:34:14
       TXT
     end
-    let(:parsed_data) { parser.extract(package_description_text) }
+    let(:parsed_data) { subject.extract(package_description_text) }
 
     context 'returns parsed data as a Hash' do
       it { expect(parsed_data).not_to be_nil }

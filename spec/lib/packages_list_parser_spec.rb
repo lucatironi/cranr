@@ -3,7 +3,8 @@ require 'packages_list_parser'
 require 'active_support/core_ext/string'
 
 RSpec.describe PackagesListParser do
-  let(:parser) { described_class.new }
+  let(:subject) { described_class.new }
+
   describe '#extract' do
     let(:packages_text) do
       <<-TXT.strip_heredoc
@@ -23,7 +24,7 @@ RSpec.describe PackagesListParser do
         NeedsCompilation: no
       TXT
     end
-    let(:parsed_data) { parser.extract(packages_text) }
+    let(:parsed_data) { subject.extract(packages_text) }
 
     context 'returns parsed data' do
       it { expect(parsed_data).to be_kind_of(Array) }
@@ -55,10 +56,10 @@ RSpec.describe PackagesListParser do
         TXT
       end
 
-      it { expect(parser.extract('')).to be_empty }
-      it { expect(parser.extract(1337)).to be_empty }
-      it { expect(parser.extract(nil)).to be_empty }
-      it { expect(parser.extract(wrong_packages_text)).to match_array([{ name: 'abbyyR', version: '0.5.1' }]) }
+      it { expect(subject.extract('')).to be_empty }
+      it { expect(subject.extract(1337)).to be_empty }
+      it { expect(subject.extract(nil)).to be_empty }
+      it { expect(subject.extract(wrong_packages_text)).to match_array([{ name: 'abbyyR', version: '0.5.1' }]) }
     end
   end
 end
