@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'package_parser'
+require 'packages_list_parser'
 
-RSpec.describe PackageParser do
+RSpec.describe PackagesListParser do
   describe '#extract' do
    let(:packages_text) {
 <<-EOS
@@ -21,7 +21,7 @@ License: MIT + file LICENSE
 NeedsCompilation: no
 EOS
     }
-    let(:parsed_data) { PackageParser.new(packages_text).extract }
+    let(:parsed_data) { described_class.new(packages_text).extract }
 
     context 'returns parsed data' do
       it { expect(parsed_data).to be_kind_of(Array) }
@@ -48,10 +48,10 @@ Depends: R (>= 3.2.0)
 EOS
       }
 
-      it { expect(PackageParser.new('').extract).to be_empty }
-      it { expect(PackageParser.new(1337).extract).to be_empty }
-      it { expect(PackageParser.new(nil).extract).to be_empty }
-      it { expect(PackageParser.new(wrong_packages_text).extract).to match_array([{ name: 'abbyyR', version: '0.5.1' }]) }
+      it { expect(described_class.new('').extract).to be_empty }
+      it { expect(described_class.new(1337).extract).to be_empty }
+      it { expect(described_class.new(nil).extract).to be_empty }
+      it { expect(described_class.new(wrong_packages_text).extract).to match_array([{ name: 'abbyyR', version: '0.5.1' }]) }
     end
   end
 end
