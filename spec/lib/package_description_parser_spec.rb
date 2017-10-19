@@ -49,8 +49,16 @@ RSpec.describe PackageDescriptionParser do
       it { expect(parsed_data['Date']).to eq('2015-05-04') }
       it { expect(parsed_data['Date/Publication']).to eq('2015-05-05 11:34:14') }
       it { expect(parsed_data['Maintainer']).to eq('Blum Michael <michael.blum@imag.fr>') }
-      it { expect(parsed_data['Author']).to eq('Csillery Katalin [aut], Lemaire Louisiane [aut], Francois Olivier [aut], Blum Michael [aut, cre]') }
-      it { expect(parsed_data['Description']).to eq('Implements several ABC algorithms for performing parameter estimation, model selection, and goodness-of-fit. Cross-validation tools are also available for measuring the accuracy of ABC estimates, and to calculate the misclassification probabilities of different models.') }
+      it {
+        expect(parsed_data['Author']).to eq('Csillery Katalin [aut], Lemaire Louisiane [aut], ' \
+        'Francois Olivier [aut], Blum Michael [aut, cre]')
+      }
+      it {
+        expect(parsed_data['Description']).to eq('Implements several ABC algorithms for performing ' \
+        'parameter estimation, model selection, and goodness-of-fit. Cross-validation tools are also ' \
+        'available for measuring the accuracy of ABC estimates, and to calculate the misclassification ' \
+        'probabilities of different models.')
+      }
     end
   end
 end
