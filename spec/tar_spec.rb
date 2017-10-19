@@ -16,7 +16,7 @@ RSpec.describe Util::Tar do
         tar_file = File.open(File.join(File.dirname(__FILE__), 'fixtures', 'files', 'abc_2.1.tar'))
         Util::Tar.new.untar(tar_file, tmp_dir)
 
-        expect(File.new(File.join(tmp_dir, 'abc', 'DESCRIPTION'))).not_to be_nil
+        expect(File.read(File.join(tmp_dir, 'abc', 'DESCRIPTION'))).not_to be_nil
       end
     end
   end
