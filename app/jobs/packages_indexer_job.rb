@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'packages_fetcher'
+
 class PackagesIndexerJob < ApplicationJob
   queue_as :default
 

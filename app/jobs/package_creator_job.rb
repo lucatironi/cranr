@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'package_people_parser'
+
 class PackageCreatorJob < ApplicationJob
   queue_as :default
 
