@@ -36,6 +36,12 @@ RSpec.describe PackageCreatorJob, typer: :job do
       expect(Package.last.publication_date).to eq(Time.parse('2015-05-05 11:34:14'))
       expect(Package.last.title).to eq('Tools for Approximate Bayesian Computation (ABC)')
       expect(Package.last.description).to include('Implements several ABC algorithms for performing')
+
+      expect(Package.last.maintainers).to include(Person.find_by(name: 'Blum Michael', email: 'michael.blum@imag.fr'))
+    end
+
+    it 'creates new authors/maintainers' do
+      expect { subject.perform(package_hash) }.to change { Person.count }
     end
   end
 
@@ -60,6 +66,13 @@ RSpec.describe PackageCreatorJob, typer: :job do
 
       expect(Package.last.name).to eq('abc')
       expect(Package.last.version).to eq('2.2')
+    end
+
+    it "doesn't create new authors/maintainers" do
+      modified_package_hash = package_hash
+      modified_package_hash['Version'] = '2.2'
+
+      expect { subject.perform(modified_package_hash) }.not_to change { Person.count }
     end
   end
 end

@@ -16,6 +16,16 @@ class PackageCreatorJob < ApplicationJob
       package.publication_date = Time.parse(package_hash['Date/Publication'])
       package.title = package_hash['Title']
       package.description = package_hash['Description']
+
+      package.authors = _find_or_create_people(package_hash['Author'])
+      package.maintainers = _find_or_create_people(package_hash['Maintainer'])
+    end
+  end
+
+  def _find_or_create_people(people_text)
+    people_parser = PackagePeopleParser.new
+    people_parser.extract_people(people_text).map do |person|
+      Person.find_or_create_by(name: person[:name], email: person[:email])
     end
   end
 end
