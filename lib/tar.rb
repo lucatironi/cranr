@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # inspired by https://gist.github.com/sinisterchipmunk/1335041
 
 require 'rubygems'

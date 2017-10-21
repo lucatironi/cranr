@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PackagesAuthors < ActiveRecord::Migration[5.1]
   def change
     create_table :packages_authors, id: false do |t|

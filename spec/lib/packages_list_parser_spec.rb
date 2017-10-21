@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'packages_list_parser'
 require 'active_support/core_ext/string'

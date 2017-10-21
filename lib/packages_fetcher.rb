@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 require 'tar'
 
 class PackagesFetcher
-  CRAN_SERVER_BASE_URL = 'https://cran.r-project.org/src/contrib/'.freeze
+  CRAN_SERVER_BASE_URL = 'https://cran.r-project.org/src/contrib/'
 
   def initialize
     @list_parser = PackagesListParser.new

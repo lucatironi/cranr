@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PackageDescriptionParser
   # Adapted from: https://stackoverflow.com/a/11090412
   # (?<=                Lookbehind assertion.

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PackagesIndexerJob, type: :job do
@@ -14,10 +16,12 @@ RSpec.describe PackagesIndexerJob, type: :job do
     allow(PackagesFetcher).to receive_message_chain(:new, :retrieve_list)
       .and_return(packages)
 
-    expect(PackageIndexerJob).to receive(:perform_later).once
-      .with({ name: 'A3', version: '1.0.0' })
-    expect(PackageIndexerJob).to receive(:perform_later).once
-      .with({ name: 'abbyyR', version: '0.5.1' })
+    expect(PackageIndexerJob).to receive(:perform_later)
+      .once
+      .with(name: 'A3', version: '1.0.0')
+    expect(PackageIndexerJob).to receive(:perform_later)
+      .once
+      .with(name: 'abbyyR', version: '0.5.1')
 
     subject.perform
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PackageIndexerJob, type: :job do
@@ -17,7 +19,8 @@ RSpec.describe PackageIndexerJob, type: :job do
       .with(package[:name], package[:version])
       .and_return(package_hash)
 
-    expect(PackageCreatorJob).to receive(:perform_later).once
+    expect(PackageCreatorJob).to receive(:perform_later)
+      .once
       .with(package_hash)
 
     subject.perform(package[:name], package[:version])
