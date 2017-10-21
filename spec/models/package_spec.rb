@@ -13,4 +13,9 @@ RSpec.describe Package, type: :model do
 
     it { is_expected.to have_db_index(:name) }
   end
+
+  describe 'associations' do
+    it { is_expected.to have_and_belong_to_many(:authors) }
+    it { is_expected.to have_and_belong_to_many(:maintainers) }
+  end
 end
