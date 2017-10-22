@@ -1,35 +1,19 @@
 CRANr
 
-Create a docker image with latest Ruby (2.4.2) and basically nothing else:
+[ ![Codeship Status for lucatironi/cranr](https://app.codeship.com/projects/7cc31300-985b-0135-163f-5a0d318eb11b/status?branch=master)](https://app.codeship.com/projects/252000)
+
+Setup the app:
 
 ```
-$ docker build -t cranr .
+$ docker-compose build
+
+$ docker-compose run app bin/setup
+
+$ docker-compose up
 ```
 
-Run `bundle` inside the container to generate the `Gemfile.lock` file:
+Run the specs (with the docker-compose services up and running):
 
 ```
-$ docker run -v "$PWD:/src" --rm cranr bundle
-```
-
-Start a shell inside the container:
-
-```
-$ docker run -it -v "$PWD:/src" --rm cranr bash
-```
-
-Run some commands inside the container:
-
-```
-bundle
-
-bundle exec rspec --init
-
-bundle exec rspec
-```
-
-```
-$ docker-compose run app bundle --jobs=10 --retry=5
-
-$ docker-compose run app bundle exec rails new . --force --database=postgresql --skip-test --skip-action-cable --skip-bundle
+$ docker-compose exec app rspec
 ```
