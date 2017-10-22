@@ -1,62 +1,65 @@
-version: '2'
-services:
+version: '2.1'
+
+volumes:
   store:
-    # data-only container
-    image: postgres:latest # reuse postgres container
-    volumes:
-      - /var/lib/postgresql/data
-    command: 'true'
-  db:
-    image: postgres:latest
-    ports:
-      - 5432:5432
-    volumes_from:
-      - store # connect postgres and the data-only container
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=rails_docker_database
+    driver: local
+  keyval:
+    driver: local
+  bundle:
+    driver: local
+
+services:
   app:
     build: .
     ports:
       - 3000:3000
     volumes:
       - .:/src
-    # This tells the app container to mount the `bundle` images'
-    # /bundle volume to the `app` containers /bundle path.
-    volumes_from:
-      - bundle
+      - bundle:/usr/local/bundle
     links:
       - db
       - redis
+    # Keep the stdin open, so we can attach to our app container's process and do things such as
+    # byebug, etc:
+    stdin_open: true
+    # Enable sending signals (CTRL+C, CTRL+P + CTRL+Q) into the container:
+    tty: true
     command: ./bin/start.sh
-    environment:
-      - PORT=3000
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB_NAME=rails_docker_database
-      - DB_USER=postgres
-      - DB_PSWD=postgres
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
+    environment: &app_env
+      PORT: 3000
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: cranr_db
+      DB_USER: postgres
+      DB_PSWD: postgres
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
   worker:
     image: cranr_app
-    volumes_from:
-      - bundle
+    volumes:
+      - .:/src
+      - bundle:/usr/local/bundle
     links:
       - db
       - redis
     command: bundle exec rake environment resque:work
     environment:
-      - QUEUE=*
-      - RAILS_ENV=development
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
+      <<: *app_env
+      QUEUE: '*'
+      RAILS_ENV: development
+  db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    volumes:
+      - store:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cranr_db
   redis:
     image: redis:latest
     ports:
       - 6379:6379
-  bundle:
-    image: busybox
     volumes:
-      - /bundle
+      - keyval:/var/lib/redis
