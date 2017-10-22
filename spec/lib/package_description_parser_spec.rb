@@ -5,38 +5,31 @@ require 'package_description_parser'
 require 'active_support/core_ext/string'
 
 RSpec.describe PackageDescriptionParser do
-  let(:subject) { described_class.new }
-
   describe '#extract' do
     let(:package_description_text) do
       <<-TXT.strip_heredoc
         Package: abc
         Type: Package
-        Title: Tools for Approximate Bayesian Computation (ABC)
-        Version: 2.1
-        Date: 2015-05-04
+        Title: Lorem ipsum
+        Version: 1.2.3
+        Date: 2017-10-20
         Authors@R: c(
-            person("Csillery", "Katalin", role = "aut", email="kati.csillery@gmail.com"),
-            person("Lemaire", "Louisiane", role = "aut"),
-            person("Francois", "Olivier", role = "aut"),
-            person("Blum", "Michael",
-            email = "michael.blum@imag.fr", role = c("aut", "cre")))
-        Depends: R (>= 2.10), abc.data, nnet, quantreg, MASS, locfit
-        Description: Implements several ABC algorithms for
-                performing parameter estimation, model selection, and goodness-of-fit.
-                Cross-validation tools are also available for measuring the
-                accuracy of ABC estimates, and to calculate the
-                misclassification probabilities of different models.
+            person("Tom", "Sawyer", role = "aut"),
+            person("Huck", "Finn", role = "aut"),
+            person("Mark", "Twain", email = "mark.twain@aol.com", role = c("aut", "cre")))
+        Depends: R (>= 2.10)
+        Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation
         Repository: CRAN
         License: GPL (>= 3)
         NeedsCompilation: no
-        Packaged: 2015-05-05 08:35:25 UTC; mblum
-        Author: Csillery Katalin [aut],
-          Lemaire Louisiane [aut],
-          Francois Olivier [aut],
-          Blum Michael [aut, cre]
-        Maintainer: Blum Michael <michael.blum@imag.fr>
-        Date/Publication: 2015-05-05 11:34:14
+        Packaged: 2017-10-20 08:35:25 UTC; mblum
+        Author: Tom Sawyer [aut],
+          Huck Finn [aut],
+          Mark Twain [aut, cre]
+        Maintainer: Mark Twain <mark.twain@aol.com>
+        Date/Publication: 2017-10-20 11:34:14
       TXT
     end
     let(:parsed_data) { subject.extract(package_description_text) }
@@ -46,20 +39,18 @@ RSpec.describe PackageDescriptionParser do
       it { expect(parsed_data).to be_kind_of(Hash) }
 
       it { expect(parsed_data['Package']).to eq('abc') }
-      it { expect(parsed_data['Version']).to eq('2.1') }
-      it { expect(parsed_data['Title']).to eq('Tools for Approximate Bayesian Computation (ABC)') }
-      it { expect(parsed_data['Date']).to eq('2015-05-04') }
-      it { expect(parsed_data['Date/Publication']).to eq('2015-05-05 11:34:14') }
-      it { expect(parsed_data['Maintainer']).to eq('Blum Michael <michael.blum@imag.fr>') }
+      it { expect(parsed_data['Version']).to eq('1.2.3') }
+      it { expect(parsed_data['Title']).to eq('Lorem ipsum') }
+      it { expect(parsed_data['Date']).to eq('2017-10-20') }
+      it { expect(parsed_data['Date/Publication']).to eq('2017-10-20 11:34:14') }
+      it { expect(parsed_data['Maintainer']).to eq('Mark Twain <mark.twain@aol.com>') }
       it {
-        expect(parsed_data['Author']).to eq('Csillery Katalin [aut], Lemaire Louisiane [aut], ' \
-        'Francois Olivier [aut], Blum Michael [aut, cre]')
+        expect(parsed_data['Author']).to eq('Tom Sawyer [aut], Huck Finn [aut], Mark Twain [aut, cre]')
       }
       it {
-        expect(parsed_data['Description']).to eq('Implements several ABC algorithms for performing ' \
-        'parameter estimation, model selection, and goodness-of-fit. Cross-validation tools are also ' \
-        'available for measuring the accuracy of ABC estimates, and to calculate the misclassification ' \
-        'probabilities of different models.')
+        expect(parsed_data['Description']).to eq('Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' \
+        'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ' \
+        'enim ad minim veniam, quis nostrud exercitation')
       }
     end
   end

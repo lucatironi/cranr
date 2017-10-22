@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe PackagesIndexerJob, type: :job do
-  let(:packages) { [{ name: 'A3', version: '1.0.0' }, { name: 'abbyyR', version: '0.5.1' }] }
+  let(:packages) { [{ name: 'abc', version: '1.2.3' }, { name: 'xyz', version: '3.2.1' }] }
 
   it 'retrieve the packages list with the PackagesFetcher' do
     expect(PackagesFetcher).to receive_message_chain(:new, :retrieve_list)

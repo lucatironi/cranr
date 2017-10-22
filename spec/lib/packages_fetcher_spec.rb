@@ -5,8 +5,6 @@ require 'packages_fetcher'
 require 'cran_uri_helper'
 
 RSpec.describe PackagesFetcher do
-  let(:subject) { described_class.new }
-
   describe '#retrieve_list' do
     before do
       allow(subject).to receive(:open)

@@ -5,8 +5,6 @@ require 'packages_list_parser'
 require 'active_support/core_ext/string'
 
 RSpec.describe PackagesListParser do
-  let(:subject) { described_class.new }
-
   describe '#extract' do
     let(:packages_text) do
       <<-TXT.strip_heredoc
