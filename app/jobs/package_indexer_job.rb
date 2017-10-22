@@ -5,9 +5,9 @@ require 'packages_fetcher'
 class PackageIndexerJob < ApplicationJob
   queue_as :default
 
-  def perform(package_name, package_version)
+  def perform(package)
     fetcher = PackagesFetcher.new
-    package_hash = fetcher.retrieve_package(package_name, package_version)
+    package_hash = fetcher.retrieve_package(package[:name], package[:version])
 
     PackageCreatorJob.perform_later(package_hash)
   end

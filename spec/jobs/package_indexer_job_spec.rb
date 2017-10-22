@@ -11,7 +11,7 @@ RSpec.describe PackageIndexerJob, type: :job do
       .with(package[:name], package[:version])
       .and_return(package_hash)
 
-    subject.perform(package[:name], package[:version])
+    subject.perform(package)
   end
 
   it 'enqueue a PackageCreatorJob job' do
@@ -23,6 +23,6 @@ RSpec.describe PackageIndexerJob, type: :job do
       .once
       .with(package_hash)
 
-    subject.perform(package[:name], package[:version])
+    subject.perform(package)
   end
 end
