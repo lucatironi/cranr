@@ -36,6 +36,10 @@ services:
       - DB_NAME=rails_docker_database
       - DB_USER=postgres
       - DB_PSWD=postgres
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
   bundle:
     image: busybox
     volumes:
