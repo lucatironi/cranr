@@ -1,5 +1,5 @@
-<h1>Package: <%= @package.name %> (version <%= @package.version %>)</h1>
-<h2><%= @package.title %></h2>
+<h2>Package: <%= @package.name %> (version <%= @package.version %>)</h2>
+<h3><%= @package.title %></h3>
 
 <p>
   <%= @package.description %>
@@ -8,14 +8,14 @@
   Published at <%= @package.publication_date %>
 </p>
 
-<h3>Author(s)</h3>
+<h4>Author(s)</h4>
 <ul>
 <% @package.authors.each do |author| %>
   <li><%= format_person(author) %></li>
 <% end %>
 </ul>
 
-<h3>Maintainer(s)</h3>
+<h4>Maintainer(s)</h4>
 <ul>
 <% @package.maintainers.each do |maintainer| %>
   <li><%= format_person(maintainer)%></li>
