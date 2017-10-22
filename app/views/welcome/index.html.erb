@@ -8,14 +8,14 @@
   You can find the source code of this application on GitHub on <a href="https://github.com/lucatironi/cranr">lucatironi/cranr</a>.
 </p>
 <p>
-  The app uses Rails 5.1.4 with a Postgres Database and a Redis store for enqueueing jobs with Resque. RSpec is used for the test suite.<br>
-  The development is possible using docker and docker-compose to launch the services (app, worker, db, redis) without having to install anything on the local machine (given that Docker is available).
+  The app uses <strong>Rails</strong> 5.1.4 with a <strong>Postgres</strong> database and a <strong>Redis</strong> store for enqueueing jobs with <strong>Resque</strong>. <strong>RSpec</strong> is used for the test suite.<br>
+  The development is possible using <strong>Docker</strong> and <strong>docker-compose</strong> to launch the services (app, worker, db, redis) without having to install anything on the local machine (given that Docker is available).
 </p>
 <p>
   A rake task "<code>index_cran_server</code>" can be executed or schedulted: it will retrieve the 50 first packages from the <a href="https://cran.r-project.org/src/contrib/PACKAGES">https://cran.r-project.org/src/contrib/PACKAGES</a> file and will update the packages on the app if there are new ones.
 </p>
 <p>
-  This project is continously integrated with Codeship. The current status of the build is:<br>
+  This project is continously integrated with <strong>Codeship</strong>. The current status of the build is:<br>
   <a href="https://app.codeship.com/projects/252000"><img src="https://app.codeship.com/projects/7cc31300-985b-0135-163f-5a0d318eb11b/status?branch=master"></a>
 </p>
 <h2>Development</h2>
