@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe PackagesController, type: :controller do
-  let(:valid_attributes_1) {
+  let(:valid_attributes_1) do
     {
       name: 'abc',
       version: '1.2.3',
@@ -13,9 +13,9 @@ RSpec.describe PackagesController, type: :controller do
         'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ' \
         'enim ad minim veniam, quis nostrud exercitation'
     }
-  }
+  end
 
-  let(:valid_attributes_2) {
+  let(:valid_attributes_2) do
     {
       name: 'xyz',
       version: '2.3',
@@ -25,7 +25,7 @@ RSpec.describe PackagesController, type: :controller do
         'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ' \
         'enim ad minim veniam, quis nostrud exercitation'
     }
-  }
+  end
 
   let!(:package_1) { Package.create(valid_attributes_1) }
   let!(:package_2) { Package.create(valid_attributes_2) }

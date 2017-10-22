@@ -31,10 +31,12 @@ RSpec.describe Package, type: :model do
       let!(:package_xyz_ver_2) { Package.create(name: 'xyz', version: '2', created_at: 7.days.ago) }
       let!(:package_xyz_ver_3) { Package.create(name: 'xyz', version: '3', created_at: 3.days.ago) }
 
-      it { expect(Package.all).to match_array([
-                                                package_abc_ver_1, package_abc_ver_2, package_abc_ver_3,
-                                                package_xyz_ver_1, package_xyz_ver_2, package_xyz_ver_3
-                                              ]) }
+      it {
+        expect(Package.all).to match_array([
+                                             package_abc_ver_1, package_abc_ver_2, package_abc_ver_3,
+                                             package_xyz_ver_1, package_xyz_ver_2, package_xyz_ver_3
+                                           ])
+      }
 
       it { expect(Package.latest).to match_array([package_abc_ver_3, package_xyz_ver_3]) }
     end
