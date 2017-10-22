@@ -1,2 +1,2 @@
-web: bundle exec rails server -p $PORT -b 0.0.0.0
+web: bin/rails server -p $PORT -e $RAILS_ENV
 worker: bundle exec rake environment resque:work
