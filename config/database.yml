@@ -14,4 +14,4 @@ development:
 
 test:
   <<: *default
-  database: app_test
+  database: test_db
