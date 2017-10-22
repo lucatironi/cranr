@@ -6,6 +6,6 @@ class PackagesController < ApplicationController
   end
 
   def show
-    @package = Package.find(params[:id])
+    @package = Package.includes(:authors, :maintainers).find(params[:id])
   end
 end
