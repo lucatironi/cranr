@@ -18,10 +18,10 @@ RSpec.describe PackagesIndexerJob, type: :job do
 
     expect(PackageIndexerJob).to receive(:perform_later)
       .once
-      .with(name: 'A3', version: '1.0.0')
+      .with(packages[0])
     expect(PackageIndexerJob).to receive(:perform_later)
       .once
-      .with(name: 'abbyyR', version: '0.5.1')
+      .with(packages[1])
 
     subject.perform
   end

@@ -2,14 +2,15 @@
 
 require 'spec_helper'
 require 'packages_fetcher'
+require 'cran_uri_helper'
 
 RSpec.describe PackagesFetcher do
   let(:subject) { described_class.new }
 
   describe '#retrieve_list' do
     before do
-      expect(subject).to receive(:open)
-        .with(PackagesFetcher::CRAN_SERVER_BASE_URL + 'PACKAGES')
+      allow(subject).to receive(:open)
+        .with(CranUriHelper.packages_list_url)
         .and_return(File.open(File.join('spec', 'fixtures', 'files', 'PACKAGES')))
     end
 
@@ -22,8 +23,8 @@ RSpec.describe PackagesFetcher do
     let(:package_data) { subject.retrieve_package('abc', '2.1') }
 
     before do
-      expect(subject).to receive(:open)
-        .with(PackagesFetcher::CRAN_SERVER_BASE_URL + 'abc_2.1.tar.gz')
+      allow(subject).to receive(:open)
+        .with(CranUriHelper.package_file_url('abc', '2.1'))
         .and_return(File.open(File.join('spec', 'fixtures', 'files', 'abc_2.1.tar.gz')))
     end
 
