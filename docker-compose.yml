@@ -37,6 +37,8 @@ services:
       - DB_NAME=rails_docker_database
       - DB_USER=postgres
       - DB_PSWD=postgres
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
   worker:
     image: cranr_app
     volumes_from:
