@@ -7,7 +7,7 @@ services:
       - /var/lib/postgresql/data
     command: 'true'
   db:
-    image: postgres
+    image: postgres:latest
     ports:
       - 5432:5432
     volumes_from:
@@ -28,6 +28,7 @@ services:
       - bundle
     links:
       - db
+      - redis
     command: ./bin/start.sh
     environment:
       - PORT=3000
@@ -36,6 +37,18 @@ services:
       - DB_NAME=rails_docker_database
       - DB_USER=postgres
       - DB_PSWD=postgres
+  worker:
+    image: cranr_app
+    volumes_from:
+      - bundle
+    links:
+      - redis
+    command: bundle exec rake environment resque:work
+    environment:
+      - QUEUE=*
+      - RAILS_ENV=development
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
   redis:
     image: redis:latest
     ports:
