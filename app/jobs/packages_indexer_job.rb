@@ -9,7 +9,7 @@ class PackagesIndexerJob < ApplicationJob
     fetcher = PackagesFetcher.new
     packages = fetcher.retrieve_list
 
-    packages.each do |package|
+    packages.take(50).each do |package|
       PackageIndexerJob.perform_later(package)
     end
   end
