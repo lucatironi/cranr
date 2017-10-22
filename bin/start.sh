@@ -6,4 +6,4 @@ if [ -f tmp/pids/server.pid ]; then
   rm -f tmp/pids/server.pid
 fi
 
-bundle exec rails s -p $PORT -b 0.0.0.0
+bundle exec bin/rails server -p $PORT -b 0.0.0.0
