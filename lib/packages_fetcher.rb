@@ -2,6 +2,8 @@
 
 require 'open-uri'
 require 'tar'
+require 'packages_list_parser'
+require 'package_description_parser'
 
 class PackagesFetcher
   CRAN_SERVER_BASE_URL = 'https://cran.r-project.org/src/contrib/'
