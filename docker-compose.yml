@@ -44,6 +44,7 @@ services:
     volumes_from:
       - bundle
     links:
+      - db
       - redis
     command: bundle exec rake environment resque:work
     environment:
