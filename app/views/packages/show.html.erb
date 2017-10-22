@@ -1,0 +1,27 @@
+<h1>Package: <%= @package.name %> (version <%= @package.version %>)</h1>
+<h2><%= @package.title %></h2>
+
+<p>
+  <%= @package.description %>
+</p>
+<p>
+  Published at <%= @package.publication_date %>
+</p>
+
+<h3>Author(s)</h3>
+<ul>
+<% @package.authors.each do |author| %>
+  <li><%= format_person(author) %></li>
+<% end %>
+</ul>
+
+<h3>Maintainer(s)</h3>
+<ul>
+<% @package.maintainers.each do |maintainer| %>
+  <li><%= format_person(maintainer)%></li>
+<% end %>
+</ul>
+
+<p>
+  <%= link_to_download(@package) %> | <%= link_to 'back', packages_path %>
+</p>

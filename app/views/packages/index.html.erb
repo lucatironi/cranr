@@ -1,0 +1,23 @@
+<h1>Latest Packages</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Version</th>
+      <th>Publication Date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @packages.each do |package| %>
+    <tr>
+      <td><%= package.name %></td>
+      <td><%= package.version %></td>
+      <td><%= package.publication_date %></td>
+      <td><%= link_to_download(package) %></td>
+      <td><%= link_to('info', package) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
