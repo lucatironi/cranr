@@ -8,6 +8,6 @@ class CranUriHelper
   end
 
   def self.package_file_url(name, version)
-     CRAN_SERVER_BASE_URL + "#{name}_#{version}.tar.gz"
+    CRAN_SERVER_BASE_URL + "#{name}_#{version}.tar.gz"
   end
 end
