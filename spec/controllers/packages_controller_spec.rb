@@ -3,8 +3,32 @@
 require 'rails_helper'
 
 RSpec.describe PackagesController, type: :controller do
-  let!(:package_1) { Package.create(valid_attributes) }
-  let!(:package_2) { Package.create(valid_attributes) }
+  let(:valid_attributes_1) {
+    {
+      name: 'abc',
+      version: '1.2.3',
+      publication_date: 2.months.ago,
+      title: 'Lorem ipsum',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' \
+        'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ' \
+        'enim ad minim veniam, quis nostrud exercitation'
+    }
+  }
+
+  let(:valid_attributes_2) {
+    {
+      name: 'xyz',
+      version: '2.3',
+      publication_date: 3.months.ago,
+      title: 'Lorem ipsum',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' \
+        'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ' \
+        'enim ad minim veniam, quis nostrud exercitation'
+    }
+  }
+
+  let!(:package_1) { Package.create(valid_attributes_1) }
+  let!(:package_2) { Package.create(valid_attributes_2) }
 
   describe 'GET #index' do
     it 'assigns all packages as @packages' do

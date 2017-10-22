@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class PackagesController < ApplicationController
-  def index; end
+  def index
+    @packages = Package.latest
+  end
 
-  def show; end
+  def show
+    @package = Package.find(params[:id])
+  end
 end
