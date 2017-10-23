@@ -28,7 +28,7 @@ RSpec.describe PackageIndexerJob, type: :job do
     }
   end
 
-  it 'retrieve the package hash with the PackagesFetcher' do
+  it 'retrieves the package hash with the PackagesFetcher' do
     expect_any_instance_of(PackagesFetcher).to receive(:retrieve_package)
       .with(package[:name], package[:version])
       .and_return(package_hash)
@@ -36,7 +36,7 @@ RSpec.describe PackageIndexerJob, type: :job do
     subject.perform(package)
   end
 
-  it 'enqueue a PackageCreatorJob job' do
+  it 'enqueues a PackageCreatorJob job' do
     allow_any_instance_of(PackagesFetcher).to receive(:retrieve_package)
       .with(package[:name], package[:version])
       .and_return(package_hash)

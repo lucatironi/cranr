@@ -26,7 +26,7 @@ RSpec.describe PackagesListParser do
     end
     let(:parsed_data) { subject.extract(packages_text) }
 
-    context 'returns parsed data' do
+    context 'parsing list of packages' do
       it { expect(parsed_data).to be_kind_of(Array) }
       it { expect(parsed_data.size).to be(2) }
       it {
@@ -37,7 +37,7 @@ RSpec.describe PackagesListParser do
       }
     end
 
-    context 'gracefully handles incoherent input' do
+    context 'gracefully handling incoherent input' do
       let(:wrong_packages_text) do
         <<-TXT.strip_heredoc
           Library: A3

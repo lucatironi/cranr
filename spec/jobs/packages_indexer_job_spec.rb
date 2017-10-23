@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe PackagesIndexerJob, type: :job do
   let(:packages) { [{ name: 'abc', version: '1.2.3' }, { name: 'xyz', version: '3.2.1' }] }
 
-  it 'retrieve the packages list with the PackagesFetcher' do
+  it 'retrieves the packages list with the PackagesFetcher' do
     expect_any_instance_of(PackagesFetcher).to receive(:retrieve_list)
       .and_return(packages)
 

@@ -5,7 +5,7 @@ require 'package_people_parser'
 require 'active_support/core_ext/string'
 
 RSpec.describe PackagePeopleParser do
-  describe '#extract' do
+  describe '#extract_people' do
     let(:package_authors_text) do
       <<-TXT.strip_heredoc
           Tom Sawyer [aut],
@@ -18,7 +18,7 @@ RSpec.describe PackagePeopleParser do
     let(:parsed_authors) { subject.extract_people(package_authors_text) }
     let(:parsed_maintainers) { subject.extract_people(package_maintainers_text) }
 
-    context 'returns authors' do
+    context 'parsing authors string' do
       it { expect(parsed_authors).not_to be_empty }
       it { expect(parsed_authors).to be_kind_of(Array) }
 
@@ -31,7 +31,7 @@ RSpec.describe PackagePeopleParser do
       }
     end
 
-    context 'returns maintainers' do
+    context 'parsing maintainers string' do
       it { expect(parsed_maintainers).not_to be_empty }
       it { expect(parsed_maintainers).to be_kind_of(Array) }
 
