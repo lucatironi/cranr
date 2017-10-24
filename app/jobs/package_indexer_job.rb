@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'packages_fetcher'
+require 'package_description_fetcher'
 
 class PackageIndexerJob < ApplicationJob
   queue_as :default
 
   def perform(package)
-    fetcher = PackagesFetcher.new
-    package_hash = fetcher.retrieve_package(package[:name], package[:version])
+    fetcher = PackageDescriptionFetcher.new
+    package_hash = fetcher.retrieve(package[:name], package[:version])
 
     PackageCreatorJob.perform_later(package_hash)
   end

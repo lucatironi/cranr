@@ -6,14 +6,14 @@ RSpec.describe PackagesIndexerJob, type: :job do
   let(:packages) { [{ name: 'abc', version: '1.2.3' }, { name: 'xyz', version: '3.2.1' }] }
 
   it 'retrieves the packages list with the PackagesFetcher' do
-    expect_any_instance_of(PackagesFetcher).to receive(:retrieve_list)
+    expect_any_instance_of(PackagesListFetcher).to receive(:retrieve)
       .and_return(packages)
 
     subject.perform
   end
 
   it 'enqueues as many PackageIndexerJob jobs' do
-    allow_any_instance_of(PackagesFetcher).to receive(:retrieve_list)
+    allow_any_instance_of(PackagesListFetcher).to receive(:retrieve)
       .and_return(packages)
 
     expect(PackageIndexerJob).to receive(:perform_later)
